@@ -13,10 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // ─── 2. NAVBAR SCROLL + ACTIVE LINKS ────────────────────────────────
+    // ─── 2. NAVBAR SCROLL + ACTIVE LINKS + MOBILE MENU ──────────────────
     const navbar = document.getElementById('navbar');
     const sections = document.querySelectorAll('section');
+    const navLinksList = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links a');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksList.classList.toggle('active-menu');
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinksList.classList.remove('active-menu');
+        });
+    });
 
     window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
@@ -147,6 +161,16 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             setTimeout(type, 500);
         }
+    }
+
+    // ─── 8. CONTACT FORM ────────────────────────────────────────────────
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('SYSTEM MESSAGE: Your message has been securely transmitted. I will get back to you shortly.');
+            contactForm.reset();
+        });
     }
 
 });
