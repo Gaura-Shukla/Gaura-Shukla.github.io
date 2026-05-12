@@ -615,6 +615,19 @@ footer {
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--text-secondary);
+        text-align: center;
+    }
+    
+    .nav-links.active-menu {
+        display: flex;
     }
     
     .mobile-menu-btn {
